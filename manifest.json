@@ -1,0 +1,20 @@
+{
+  "name": "武圣传奇之玛法传说",
+  "short_name": "玛法传说",
+  "icons": [
+    {
+      "src": "assets/images/icons/icon_144x144.png?2",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/icons/icon_580x1218.png",
+      "sizes": "580x1218",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html?from=homescreen ",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#1976d2"
+}

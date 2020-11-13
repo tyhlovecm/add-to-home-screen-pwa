@@ -1,0 +1,115 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "vconsole",
+        "scope": null,
+        "escapedName": "vconsole",
+        "name": "vconsole",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\Administrator\\Desktop\\pwa-book-demo\\chapter06\\install-prompt"
+    ]
+  ],
+  "_from": "vconsole@latest",
+  "_hasShrinkwrap": false,
+  "_id": "vconsole@3.3.4",
+  "_inCache": true,
+  "_location": "/vconsole",
+  "_nodeVersion": "10.10.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/vconsole_3.3.4_1566203613962_0.6068435863412394"
+  },
+  "_npmUser": {
+    "name": "maiz",
+    "email": "me@maizify.com"
+  },
+  "_npmVersion": "6.5.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "vconsole",
+    "scope": null,
+    "escapedName": "vconsole",
+    "name": "vconsole",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/vconsole/-/vconsole-3.3.4.tgz",
+  "_shasum": "a7dacd8887b3d3e902e8d18425cda56c34e77f51",
+  "_shrinkwrap": null,
+  "_spec": "vconsole",
+  "_where": "C:\\Users\\Administrator\\Desktop\\pwa-book-demo\\chapter06\\install-prompt",
+  "author": {
+    "name": "Tencent"
+  },
+  "bugs": {
+    "url": "https://github.com/Tencent/vConsole/issues"
+  },
+  "dependencies": {},
+  "description": "A lightweight, extendable front-end developer tool for mobile web page.",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "chai": "^4.2.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "html-loader": "^0.5.5",
+    "jsdom": "^15.1.1",
+    "json-loader": "^0.5.7",
+    "less": "^3.10.0",
+    "less-loader": "^5.0.0",
+    "mocha": "^5.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-9yihsic96NPoMLQx/lCQwH9d89H0bbMW3LZPzo/t4yGQcS1X+vTCe9OHm1XSH7WNxzGDmcSwBiKLsFGwvJpQBg==",
+    "shasum": "a7dacd8887b3d3e902e8d18425cda56c34e77f51",
+    "tarball": "https://registry.npmjs.org/vconsole/-/vconsole-3.3.4.tgz",
+    "fileCount": 83,
+    "unpackedSize": 1322694,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdWl7eCRA9TVsSAnZWagAAChkP/RPEKc9RulDJA0tC/7Gi\n6eVQOFTGVtrBGKRU0++ZUc7P5//O+hjHHWoWumhuyuFt8rjv1oc1Uf2dfIiA\nlcj7DR/PmQ5fFg3W0w6a12SCokgxlzTksPq6hcanMaU00GbS29s6lYiRv15+\ng5NF5SPP1X9LSfaphUYVxAyeibEw7cMNvJAObmoz1zLLiQNtqDPyhFAApliR\nGhXDRmSwFuhDeoaaL61nNE7fg3alOWIM9i6WLA8ZkYtEDlxOqOEjR9Qk1Vuc\nFg89bnBQMT4hPnKIEP/7oA5tiAZihGbuvY23ETdm2GQI/8PNv9mF7zrT6GTH\nReFE28wiqX0UFjKW1K73AHBMlYRXy8otMmBu2LV7ErX4m/URF/xkbVyrJPao\n93KWrXXtp9YiJNwGCYVFopXIk2r2vQ1gti1yUZNpMfeRSuZnxdzxqx9GtbMO\niH1ZVjEEWjcANnQUB5sGuwrdKkqC/b7RjZIDLD3ZlZX7c5Q78ht9YImfzGKU\ngPU1gjaHKTCrDUOCiZPHbXOrkQbMxHK8y/uyprhd5sN+McQGZdmfnEAK2X8g\nPGh42kX9sNKeg8svgJFgzr8zz2hvBWL+YwlOfjDvZq3VOrVli5cJW98tPS7h\nuCYVv/oHYZdMLFwxH6M7brl5UEaL6LCjiW3irlRQln+LxvvdydhhtyUMBHUQ\n39Fl\r\n=NAA9\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "gitHead": "f4c6f5b49a633ccdf725b1587bb76ff7add8ac7c",
+  "homepage": "https://github.com/Tencent/vConsole",
+  "keywords": [
+    "console",
+    "debug",
+    "mobile"
+  ],
+  "license": "MIT",
+  "main": "dist/vconsole.min.js",
+  "maintainers": [
+    {
+      "name": "maiz",
+      "email": "me@maizify.com"
+    }
+  ],
+  "name": "vconsole",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tencent/vConsole.git"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "mocha"
+  },
+  "typings": "dist/vconsole.min.d.ts",
+  "version": "3.3.4"
+}

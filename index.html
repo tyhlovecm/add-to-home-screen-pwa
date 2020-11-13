@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>武圣传奇之玛法传说</title>
+  <link rel="manifest" href="./manifest.json?8">
+  <link rel="stylesheet" href="./style/fonts/iconfont.css?8">
+  <link rel="stylesheet" href="./style/index.css?8">
+
+  <link rel="shortcut icon" sizes="144x144" href="./assets/images/icons/icon_144x144.png?8">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/images/icons/icon_144x144.png?8">
+
+  
+  <script src="./vconsole/dist/vconsole.min.js?8"></script>
+  <link rel="stylesheet" type="text/css" href="./addtohomescreen.css?8">
+  <script src="./addtohomescreen.js?8"></script>
+
+</head>
+<body>
+  <header class="header-wrapper">
+    <div class="header-inner-wrapper">
+      <div class="header-mid-name">Demo</div>
+    </div>
+  </header>
+  <section class="main">
+    <button class="add-button" style="display: none;">点击安装到桌面</button>
+    <div style="margin-left:11px">
+      <ul>
+
+      </ul>
+    </div>
+  </section>
+  <!-- service worker -->
+  <script>
+    //生成游客用户信息
+    if (!localStorage.uid) {
+      var timestamp = (new Date()).valueOf();
+      localStorage.uid = timestamp;
+    }
+
+    function getQueryVariable(variable)
+    {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+    }
+
+    function addInfoElement(title, content){
+      var ul = document.querySelector('.main ul');
+      var li = document.createElement('li');
+      ul.appendChild(li);
+      var label = document.createElement('font');
+      label.color = "red";
+      label.innerHTML = title;
+      li.appendChild(label);
+      var p = document.createElement('p');
+      p.innerHTML = content;
+      li.appendChild(p);
+    }
+
+    if (getQueryVariable('from') == 'homescreen') {
+        // alert('https://raa.biggerking.cn/tianniu/indexsldz.html?uid='+localStorage.uid);
+        window.location.href = 'https://raa.biggerking.cn/tianniu/indexsldz.html?uid='+localStorage.uid;
+    }
+
+    // 初始化vConsole
+    window.vConsole = new window.VConsole({
+        defaultPlugins: ['system', 'network', 'element', 'storage', 'performance'], // 可以在此设定要默认加载的面板
+        maxLogNumber: 1000,
+        onReady: function() {
+            console.log('vConsole is ready.');
+        },
+        onClearLog: function() {
+            console.log('on clearLog');
+        }
+    });
+
+    // 判断浏览器是否支持 Service Worker
+    if ('serviceWorker' in navigator) {
+      // 在 load 事件触发后注册 Service Worker，确保 Service Worker 的注册不会影响首屏速度
+      window.addEventListener('load', function () {
+        // 注册 Service Worker
+        navigator.serviceWorker.register('/sw.js').then(function (registration) {
+          // 注册成功
+          addInfoElement('serviceWorker', 'registration sw.js');
+          console.log('ServiceWorker registration successful with scope: ', registration.scope)
+        }).catch(function (err) {
+          // 注册失败 :(
+          addInfoElement('ServiceWorker registration failed', err);
+          console.warn('ServiceWorker registration failed: ', err)
+        })
+      })
+    }else{
+      addInfoElement('serviceWorker', 'serviceWorker not in navigator');
+    }
+
+    let deferredPrompt;
+    const addBtn = document.querySelector('.add-button');
+    addBtn.style.display = 'none';
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      addInfoElement('addEventListener', 'beforeinstallprompt');
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI to notify the user they can add to home screen
+      addBtn.style.display = 'block';
+
+      addBtn.addEventListener('click', (e) => {
+        // hide our user interface that shows our A2HS button
+        addBtn.style.display = 'none';
+        // Show the prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+            deferredPrompt = null;
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the A2HS prompt');
+            } else {
+              console.log('User dismissed the A2HS prompt');
+            }
+        });
+      });
+    });
+
+    var _ua = window.navigator.userAgent;
+    var isIDevice = (/iphone|ipod|ipad/i).test(_ua);
+    var isMobileSafari = isIDevice && _ua.indexOf('Safari') > -1 && _ua.indexOf('CriOS') < 0;
+    var OSVersion = _ua.match(/(OS|Android) (\d+[_\.]\d+)/);
+    var OSVersion = OSVersion && OSVersion[2] ? +OSVersion[2].replace('_', '.') : 0;
+    var isMobileChrome = _ua.indexOf('Android') > -1 && (/Chrome\/[.0-9]*/).test(_ua) && _ua.indexOf("Version") == -1;
+    var message = isMobileChrome ? '要将此web应用程序添加到主屏幕，请打开浏览器选项菜单并点击<strong>添加到主屏幕</strong>。<small>按菜单硬件按钮（如果您的设备有）或轻触右上角的菜单图标%icon，可以访问菜单。</small>' : isIDevice ? '' : '<a href="https://tongyh.top/sldz.apk" style="display:block;"><strong>点击下载</strong><br /><small>安装安卓官方最新小包（约6M）,将会体验到高清极致爽快感！</small></a>';
+
+    addInfoElement('userAgent', _ua);
+    addInfoElement('isIDevice', isIDevice);
+    addInfoElement('isMobileSafari', isMobileSafari);
+    addInfoElement('OSVersion', OSVersion);
+    addInfoElement('isMobileChrome', isMobileChrome);
+
+    if (isIDevice) {
+      // window.history.pushState({},0,'https://raa.biggerking.cn/tianniu/indexsldz.html?uid='+localStorage.uid);
+    }
+
+    addToHomescreen({
+      // the followings are just for debug, customize the options to your needs
+      debug: true,
+      logging: true,
+      message: message,
+      startDelay: 0,
+      skipFirstVisit: false,
+      displayPace: false,
+      lifespan: 9999,
+    });
+  </script>
+  </body>
+</html>
